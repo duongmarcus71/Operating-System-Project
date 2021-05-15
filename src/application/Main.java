@@ -31,5 +31,6 @@ public class Main extends Application {
 		 System.out.println(MainController.getCoordinator().getnResource());
 		 System.out.println("Numnber of Processes");
 		 System.out.println(MainController.getCoordinator().getnProcess());
+		 cout 1
 	}
 }
