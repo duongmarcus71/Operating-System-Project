@@ -23,7 +23,7 @@ public class Coordinator {
 		process = new Vector<Process>(nProcess);
 		
 		for(int i = 0; i < nResource; ++ i) {
-			resource.add(new Resource(rd.nextInt(1000)+1, "Resource " + (i+1)));
+			resource.add(new Resource(rd.nextInt(1000)+1, "Resource " + (i)));
 		}
 		
 		for(int i = 0; i < nProcess; ++ i) {
@@ -72,6 +72,14 @@ public class Coordinator {
 			process.get(i).printInfor();
 		}
 		
+	}
+	
+	public int getNProcess() {
+		return nProcess;
+	}
+	
+	public int getNResource() {
+		return nResource;
 	}
 	
 	public Vector<Resource> getResource() {

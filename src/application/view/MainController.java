@@ -41,10 +41,10 @@ public class MainController extends Pane implements Initializable  {
 	@FXML
 	private TableView<String[]> NEED;
     @FXML
-    private Label nOfRLabel;
+    private Label nOfRLabel, nOfPLabel;
 
     @FXML
-    private Label nOfR;
+    private Label nOfR, nOfP;
 
     @FXML
     private TableView<Resource> resourceTable;
@@ -66,8 +66,6 @@ public class MainController extends Pane implements Initializable  {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		// generate coordinator
 		
 		coordinator = new Coordinator ();
 		initTable(MAX);
@@ -76,6 +74,10 @@ public class MainController extends Pane implements Initializable  {
 		setTable(ALLOCATE);
 		initTable(NEED);
 		setTable(NEED);
+		
+		// init number of process and resource
+		nOfP.setText(Integer.toString(coordinator.getNProcess()));
+		nOfR.setText(Integer.toString(coordinator.getNResource()));
 		
 		// init resource tableview
 		dataResource = FXCollections.observableArrayList();
