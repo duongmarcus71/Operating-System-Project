@@ -84,7 +84,7 @@ public class MainController extends Pane implements Initializable  {
 		resourceTable.setItems(dataResource);
 		
 		// add info of resouces in resource table
-		resourceTable(coordinator.getResource()); 
+		 resourceTable(coordinator.getResource()); 
 		
 		// init query tableview
 //		dataQuery = FXCollections.observableArrayList();
@@ -95,6 +95,7 @@ public class MainController extends Pane implements Initializable  {
 		// add info of query in query table
 //		queryTable(coordinator.getnResource(), coordinator.getProcess().)
 	}
+	
 	public void initTable(TableView table) {
 		 
 	      TableColumn[] Tc = new TableColumn[coordinator.getnResource()+1] ;
@@ -104,12 +105,10 @@ public class MainController extends Pane implements Initializable  {
 	    	  if(i==0) {
 	    		  Tc[i] = new TableColumn<String[],String>("Process");
 	    		  Tc[i].setPrefWidth(60);
-	    		
 	    	  }
 	    	  else {
 	    	  Tc[i] = new TableColumn<String[],String>("R" + Integer.toString(i-1));
-	          Tc[i].setPrefWidth( (table.getPrefWidth() - 60 ) / coordinator.getnResource());
-	          
+	          Tc[i].setPrefWidth(60);
 	    	  }
 	    	  Tc[i].setCellValueFactory(new Callback<CellDataFeatures<String[], String>, ObservableValue<String>>() {
 		           @Override
