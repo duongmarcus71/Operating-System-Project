@@ -15,6 +15,7 @@ public class Resource {
 	}
 	
 	public String getName() {
-		return this.name;
+		return name;
 	}
+	
 }

@@ -1,30 +1,20 @@
 package application.view;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.SubScene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 import element.*;
 import element.Process;
@@ -138,6 +128,7 @@ public class MainController extends Pane implements Initializable  {
 			if(table == NEED) v=p.getNeed();
 			return v;
 		};
+		
 		for (Process p : coordinator.getProcess()) {
 			Vector <Integer> v = Get.Feature(p);
 			data[index][0] = "Process " + Integer.toString(index);
