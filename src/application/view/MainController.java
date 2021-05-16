@@ -95,7 +95,7 @@ public class MainController extends Pane implements Initializable  {
 		requestQueryCol.setCellValueFactory(new MapValueFactory<>("Request"));
 		queryTable.setItems(dataQuery);
 		// add info of query in query table
-		queryTable(coordinator.getnResource(), coordinator);
+		queryTable(coordinator.getNProcess(), coordinator);
 	}
 	
 	public void initTable(TableView table) {
