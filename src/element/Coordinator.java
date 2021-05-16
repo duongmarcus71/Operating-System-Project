@@ -7,11 +7,17 @@ import others.VectorOperator;
 import java.util.Random;
 
 public class Coordinator {
+	
 	private final int MAX_PROCESS = 10;
+	
 	private final int MAX_RESOURCE = 10;
+	
 	private Vector<Resource> resource;
+	
 	private Vector<Process> process;
+	
 	private int nProcess;
+	
 	private int nResource;
 	
 	public Coordinator() {
@@ -31,7 +37,7 @@ public class Coordinator {
 		}
 	}
 	
-	boolean isSafe() {
+	public boolean isSafe() {
 		
 		Vector<Integer> work = new Vector<Integer>(nResource);
 		Vector<Boolean> finish = new Vector<Boolean>();
@@ -62,16 +68,15 @@ public class Coordinator {
 		return true;
 	}
 	
-	void printInfor() {
-		System.out.println(nResource);
-		for(int i = 0; i < nResource; ++ i) {
-			System.out.print(resource.get(i).getAvailable() + " ");
-		}
-		System.out.println( "\n" + nProcess );
-		for(int i = 0; i < nProcess; ++ i) {
-			process.get(i).printInfor();
-		}
+	public void changeState(int n, Vector<Integer> r) {
 		
+		VectorOperator vO = new VectorOperator();
+		process.get(n).setAllocation(vO.add(nResource, process.get(n).getAllocation(), r));
+		process.get(n).setNeed(vO.sub(nResource, process.get(n).getMax(), process.get(n).getAllocation()));
+		
+		for(int i = 0; i < nResource; ++ i) {
+			resource.get(i).setAvailable(resource.get(i).getAvailable() - r.get(i));
+		}
 	}
 	
 	public int getNProcess() {
@@ -88,14 +93,5 @@ public class Coordinator {
 
 	public Vector<Process> getProcess() {
 		return process;
-	}
-
-	public static void main(String[] args) {
-		
-		Coordinator coordinator = new Coordinator();
-		
-		coordinator.printInfor();
-		
-		System.out.println(coordinator.isSafe());
 	}
 }

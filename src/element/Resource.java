@@ -14,6 +14,11 @@ public class Resource {
 		return available;
 	}
 	
+	public void setAvailable(int v) {
+		
+		available = v;
+	}
+	
 	public String getName() {
 		return name;
 	}

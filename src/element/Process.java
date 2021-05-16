@@ -44,12 +44,19 @@ public class Process {
 		return need;
 	}
 	
-	void printInfor() {
-		for(int i = 0; i < max.size(); ++ i) {
-			System.out.println(max.get(i) + " " + allocation.get(i) + " " + need.get(i));
-		}
-		System.out.print("\n");
-		
+	public void setAllocation(Vector<Integer> c) {
+		allocation.clear();
+		allocation.addAll(c);
+	}
+	
+	public void setNeed(Vector<Integer> c) {
+		need.clear();
+		need.addAll(c);
+	}
+	
+	public void setMax(Vector<Integer> c) {
+		max.clear();
+		max.addAll(c);
 	}
 
 }

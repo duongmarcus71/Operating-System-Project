@@ -10,6 +10,15 @@ public class Query {
 	
 	private Vector<Integer> request;
 	
+	public Query(int n) {
+		posProcess = 0;
+		request = new Vector<Integer>(n+1);
+		
+		for(int i = 0; i < n; ++ i) {
+			request.add(0);
+		}
+	}
+	
 	public Query(int n, Vector<Process> p ) {
 		
 		Random rd = new Random();
@@ -28,6 +37,12 @@ public class Query {
 	
 	public Vector<Integer> getRequest() {
 		return request;
+	}
+	
+	public void print() {
+		for(int i = 0;i < request.size(); ++ i) {
+			System.out.println(request.get(i));
+		}
 	}
 	
 }
