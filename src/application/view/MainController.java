@@ -32,7 +32,7 @@ import others.*;
 
 public class MainController extends Pane implements Initializable  {
 	private ObservableList<Resource> dataResource; 
-	private ObservableList<Query> dataQuery; 
+	private ObservableList<Map<String, String>> dataQuery;  
 	private static Coordinator coordinator;
 	@FXML
 	private TableView<String[]> MAX;
@@ -56,13 +56,13 @@ public class MainController extends Pane implements Initializable  {
     private TableColumn<Resource, Integer> availableResourceCol;
 
     @FXML
-    private TableView<Query> queryTable;
+    private TableView queryTable;
 
     @FXML
-    private TableColumn<Resource, String> nameQueryCol;
+    private TableColumn<Map, String> nameQueryCol;
 
     @FXML
-    private TableColumn<Query, Integer> requestQueryCol;
+    private TableColumn<Map, String> requestQueryCol;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -89,13 +89,13 @@ public class MainController extends Pane implements Initializable  {
 		 resourceTable(coordinator.getResource()); 
 		
 		// init query tableview
-//		dataQuery = FXCollections.observableArrayList();
-//		nameQueryCol.setCellValueFactory(new PropertyValueFactory<Resource, String>("name"));
-//		requestQueryCol.setCellValueFactory(new PropertyValueFactory<Query, Integer>("request"));
-//		queryTable.setItems(dataQuery);
+		dataQuery = FXCollections.<Map<String, String>>observableArrayList();
+		nameQueryCol.setCellValueFactory(new MapValueFactory<>("Name"));
+		requestQueryCol.setCellValueFactory(new MapValueFactory<>("Request"));
+		queryTable.setItems(dataQuery);
 		
 		// add info of query in query table
-//		queryTable(coordinator.getnResource(), coordinator.getProcess().)
+		queryTable(coordinator.getnResource(), coordinator);
 	}
 	
 	public void initTable(TableView table) {
@@ -159,8 +159,17 @@ public class MainController extends Pane implements Initializable  {
 		dataResource.addAll(r);
 	}
 	
-	public void queryTable(int n, Vector<Integer> max) {
-		Query q = new Query(n, max);
+	public void queryTable(int n, Coordinator c) {
+		Query q = new Query(n, c);
+		Map<String, Integer> queryMap = q.getQueryMap();
+		for(String name : queryMap.keySet()) {
+			Map<String, String> item = new HashMap<>();
+			item.put("Name", name);
+			item.put("Request", queryMap.get(name).toString());
+			dataQuery.add(item);
+			
+		}	
+		//q.printQuery();
 	}
 }
 	
