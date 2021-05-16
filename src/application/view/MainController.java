@@ -105,6 +105,7 @@ public class MainController extends Pane implements Initializable  {
 		turn = false;
 		fTurn = false;
 		q = new Query(coordinator.getNResource());
+		processRequest.setVisible(false);
 	}
 	
 	public void initUI() {
@@ -126,7 +127,7 @@ public class MainController extends Pane implements Initializable  {
 	    	  }
 	    	  else {
 	    	  Tc[i] = new TableColumn<String[],String>("R" + Integer.toString(i-1));
-	          Tc[i].setPrefWidth(60);
+	          Tc[i].setPrefWidth((table.getPrefWidth() - 60)/ (coordinator.getNResource() ) );
 	    	  }
 	    	  
 	    	  Tc[i].setCellValueFactory(new Callback<CellDataFeatures<String[], String>, ObservableValue<String>>() {
@@ -176,7 +177,8 @@ public class MainController extends Pane implements Initializable  {
 	public void queryTable(int n) {
 		dataQuery.clear();
 		q = new Query(n, coordinator.getProcess() );
-		processRequest.setText(Integer.toString(q.getPos()));
+		processRequest.setVisible(true);
+		processRequest.setText("P" + Integer.toString(q.getPos()));
 		
 		int tmp = coordinator.getNResource();
 		for(int i = 0; i < tmp; ++ i) {

@@ -23,11 +23,18 @@ public class Query {
 		
 		Random rd = new Random();
 		posProcess = rd.nextInt(n);
+		Vector<Integer> need = p.get(posProcess).getNeed();
 		Vector<Integer> max = p.get(posProcess).getMax();
-		request = new Vector<Integer>(max.size());
-		
-		for(int i = 0; i < max.size(); ++ i) {
-			request.add(rd.nextInt(max.get(i)));
+		request = new Vector<Integer>(need.size());
+
+		for(int i = 0; i < need.size(); ++ i) {
+			double percentage = 1.0 / (rd.nextInt(4)+1);
+			if(percentage < 1) {
+				request.add(rd.nextInt(need.get(i)));
+			}
+			else {
+				request.add(rd.nextInt(max.get(i)));
+			}
 		}
 	}
 	
