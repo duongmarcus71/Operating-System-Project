@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
    <children>
-      <Button fx:id="nextStepButton" layoutX="695.0" layoutY="535.0" mnemonicParsing="false" text="Next Step" />
+      <Button fx:id="nextStepButton" layoutX="698.0" layoutY="532.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
       <Label fx:id="nOfPLabel" layoutX="14.0" layoutY="6.0" text="Number of process:">
          <font>
             <Font size="18.0" />
@@ -31,23 +31,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="systemStatusLabel" layoutX="595.0" layoutY="281.0" text="System Status:">
+      <Label fx:id="systemStatusLabel" layoutX="628.0" layoutY="316.0" text="System Status:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="systemStatus" layoutX="721.0" layoutY="281.0" text="Label">
+      <Label fx:id="systemStatus" layoutX="742.0" layoutY="316.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="viewDetailButton" layoutX="813.0" layoutY="282.0" mnemonicParsing="false" text="View Detail" />
-      <Label fx:id="queryStatusLabel" layoutX="414.0" layoutY="316.0" text="Query Status:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="queryStatus" layoutX="553.0" layoutY="316.0" text="Label">
+      <Button fx:id="viewDetailButton" layoutX="820.0" layoutY="317.0" mnemonicParsing="false" text="View Detail" />
+      <Label fx:id="queryStatusLabel" layoutX="382.0" layoutY="316.0" text="Query Status:">
          <font>
             <Font size="18.0" />
          </font>
@@ -70,12 +65,12 @@
           <TableColumn fx:id="requestQueryCol" prefWidth="93.60003662109375" text="Request" />
         </columns>
       </TableView>
-      <Label fx:id="processRequestLabel" layoutX="391.0" layoutY="335.0" prefHeight="27.0" prefWidth="137.0" text="Process Request">
+      <Label fx:id="processRequestLabel" layoutX="382.0" layoutY="343.0" prefHeight="27.0" prefWidth="137.0" text="Process Request:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="processRequest" layoutX="529.0" layoutY="335.0" text="Label">
+      <Label fx:id="processRequest" layoutX="519.0" layoutY="343.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>

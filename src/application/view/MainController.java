@@ -1,6 +1,8 @@
 package application.view;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,15 +24,19 @@ import element.Process;
 import others.*;
 
 public class MainController extends Pane implements Initializable  {
-	private ObservableList<Resource> dataResource; 
-	private ObservableList<Map<String, String>> dataQuery;  
+	private ObservableList<Resource> dataResource;
+	
+	private ObservableList<Map<String, String>> dataQuery; 
+	
 	private static Coordinator coordinator;
+	
 	@FXML
 	private TableView<String[]> MAX;
 	@FXML
 	private TableView<String[]> ALLOCATE;
 	@FXML
 	private TableView<String[]> NEED;
+	
     @FXML
     private Label nOfRLabel, nOfPLabel, queryStatusLabel, processRequestLabel;
 
@@ -58,6 +64,7 @@ public class MainController extends Pane implements Initializable  {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// init process tableview
 		coordinator = new Coordinator ();
 		initTable(MAX);
 		setTable(MAX);
@@ -84,15 +91,16 @@ public class MainController extends Pane implements Initializable  {
 		nameQueryCol.setCellValueFactory(new MapValueFactory<>("Name"));
 		requestQueryCol.setCellValueFactory(new MapValueFactory<>("Request"));
 		queryTable.setItems(dataQuery);
+		
 		// add info of query in query table
-		queryTable(coordinator.getNProcess(), coordinator);
+		queryTable(coordinator.getNProcess());
 	}
 	
 	public void initTable(TableView table) {
 		 
-	      TableColumn[] Tc = new TableColumn[coordinator.getnResource()+1] ;
+	      TableColumn[] Tc = new TableColumn[coordinator.getNResource()+1] ;
 	  
-	      for (int i = 0; i <= coordinator.getnResource(); i++) {
+	      for (int i = 0; i <= coordinator.getNResource(); i++) {
 	    	  final int colNo = i;
 	    	  if(i==0) {
 	    		  Tc[i] = new TableColumn<String[],String>("Process");
@@ -102,6 +110,7 @@ public class MainController extends Pane implements Initializable  {
 	    	  Tc[i] = new TableColumn<String[],String>("R" + Integer.toString(i-1));
 	          Tc[i].setPrefWidth(60);
 	    	  }
+	    	  
 	    	  Tc[i].setCellValueFactory(new Callback<CellDataFeatures<String[], String>, ObservableValue<String>>() {
 		           @Override
 		           		public ObservableValue<String> call(CellDataFeatures<String[], String> p) {
@@ -119,7 +128,7 @@ public class MainController extends Pane implements Initializable  {
 	}
 	
 	public void setTable(TableView table) {
-		String [][] data = new String[coordinator.getnProcess()][coordinator.getnResource()+1];
+		String [][] data = new String[coordinator.getNProcess()][coordinator.getNResource()+1];
 		int index =0;
 		get Get = (p) -> {
 			Vector<Integer> v = new Vector<Integer>();
@@ -141,26 +150,20 @@ public class MainController extends Pane implements Initializable  {
 		table.setItems(data1);
 	}
 	
-	public static Coordinator getCoordinator() {
-		return coordinator;
-	}
-
-	
 	public void resourceTable(Vector<Resource> r) {
 		dataResource.addAll(r);
 	}
 	
-	public void queryTable(int n, Coordinator c) {
-		Query q = new Query(n, c);
+	public void queryTable(int n) {
+		Query q = new Query(n, coordinator.getProcess() );
 		processRequest.setText(Integer.toString(q.getPos()));
-		Map<String, Integer> queryMap = q.getQueryMap();
-		for(String name : queryMap.keySet()) {
+		
+		int tmp = coordinator.getNResource();
+		for(int i = 0; i < tmp; ++ i) {
 			Map<String, String> item = new HashMap<>();
-			item.put("Name", name);
-			item.put("Request", queryMap.get(name).toString());
+			item.put("Name", coordinator.getResource().get(i).getName());
+			item.put("Request", q.getRequest().get(i).toString());
 			dataQuery.add(item);
-			
 		}	
-		//q.printQuery();
 	}
 }

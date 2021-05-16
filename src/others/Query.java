@@ -1,48 +1,33 @@
 package others;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
-import element.*;
 import element.Process;
+
 public class Query {
 	
 	private int posProcess;
-	private Vector<Integer> request;
-	private Map<String, Integer> queryMap;
 	
-	public Query(int n, Coordinator c) {
+	private Vector<Integer> request;
+	
+	public Query(int n, Vector<Process> p ) {
 		
 		Random rd = new Random();
-		
 		posProcess = rd.nextInt(n);
-		Process p = c.getProcess().elementAt(posProcess);
-		Vector<Integer> max = p.getMax();
-		
+		Vector<Integer> max = p.get(posProcess).getMax();
 		request = new Vector<Integer>(max.size());
-		queryMap = new HashMap<>(max.size());
 		
 		for(int i = 0; i < max.size(); ++ i) {
-			int random = rd.nextInt(max.get(i));
-			request.add(random);
-			queryMap.put(c.getResource().elementAt(i).getName(), random);
+			request.add(rd.nextInt(max.get(i)));
 		}
-		
-		
 	}
 	
-	int getPos() {
+	public int getPos() {
 		return posProcess;
 	}
-
-	public Map<String, Integer> getQueryMap(){
-		return queryMap;
+	
+	public Vector<Integer> getRequest() {
+		return request;
 	}
 	
-	public void printQuery() {
-		for(String name : queryMap.keySet()) {
-			System.out.println(name + " - " + queryMap.get(name));
-		}
-	}
 }

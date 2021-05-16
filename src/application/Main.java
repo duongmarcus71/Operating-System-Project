@@ -26,11 +26,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		 launch(args);	
-		 System.out.println("Number of Resources");
-		 System.out.println(MainController.getCoordinator().getnResource());
-		 System.out.println("Numnber of Processes");
-		 System.out.println(MainController.getCoordinator().getnProcess());
-		 
+		 launch(args);		 
 	}
 }

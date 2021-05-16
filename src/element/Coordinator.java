@@ -90,14 +90,6 @@ public class Coordinator {
 		return process;
 	}
 
-	public int getnProcess() {
-		return nProcess;
-	}
-
-	public int getnResource() {
-		return nResource;
-	}
-
 	public static void main(String[] args) {
 		
 		Coordinator coordinator = new Coordinator();
