@@ -21,6 +21,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -41,10 +42,10 @@ public class MainController extends Pane implements Initializable  {
 	@FXML
 	private TableView<String[]> NEED;
     @FXML
-    private Label nOfRLabel, nOfPLabel;
+    private Label nOfRLabel, nOfPLabel, queryStatusLabel, processRequestLabel;
 
     @FXML
-    private Label nOfR, nOfP;
+    private Label nOfR, nOfP, queryStatus , processRequest;
 
     @FXML
     private TableView<Resource> resourceTable;
@@ -93,7 +94,6 @@ public class MainController extends Pane implements Initializable  {
 		nameQueryCol.setCellValueFactory(new MapValueFactory<>("Name"));
 		requestQueryCol.setCellValueFactory(new MapValueFactory<>("Request"));
 		queryTable.setItems(dataQuery);
-		
 		// add info of query in query table
 		queryTable(coordinator.getnResource(), coordinator);
 	}
@@ -161,6 +161,7 @@ public class MainController extends Pane implements Initializable  {
 	
 	public void queryTable(int n, Coordinator c) {
 		Query q = new Query(n, c);
+		processRequest.setText(Integer.toString(q.getPos()));
 		Map<String, Integer> queryMap = q.getQueryMap();
 		for(String name : queryMap.keySet()) {
 			Map<String, String> item = new HashMap<>();
@@ -172,5 +173,3 @@ public class MainController extends Pane implements Initializable  {
 		//q.printQuery();
 	}
 }
-	
-
