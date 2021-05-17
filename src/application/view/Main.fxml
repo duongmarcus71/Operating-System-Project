@@ -9,7 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
+=======
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
    <children>
       <Button fx:id="nextStepButton" layoutX="1149.0" layoutY="628.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
       <Label fx:id="nOfPLabel" layoutX="14.0" layoutY="6.0" text="Number of process:">
@@ -95,5 +99,18 @@
       <Button fx:id="backButton" layoutX="1039.0" layoutY="628.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="89.0" text="Back" visible="false" />
       <Button fx:id="stateNSButton" layoutX="1149.0" layoutY="628.0" mnemonicParsing="false" onAction="#stateNextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" visible="false" />
       <TextArea fx:id="resultArea" editable="false" layoutX="799.0" layoutY="374.0" prefHeight="244.0" prefWidth="473.0" visible="false" />
+<<<<<<< HEAD
+=======
+      <Button layoutX="1121.0" layoutY="15.0" mnemonicParsing="false" onAction="#home" text="HOME" textFill="#224de7">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="1204.0" layoutY="15.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="36.0" prefWidth="69.0" text="EXIT" textFill="#224de7">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
    </children>
 </Pane>

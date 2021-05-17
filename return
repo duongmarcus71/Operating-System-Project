@@ -1,0 +1,170 @@
+[33mcommit b743aff9daf9b89773f6756dde8ac538260dabfa[m[33m ([m[1;36mHEAD -> [m[1;32mhoanchinh[m[33m)[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Mon May 17 23:35:04 2021 +0700
+
+    add voi Duong
+
+[33mcommit 4c1048927662f493874ff416f2fc2c47d60aadf3[m[33m ([m[1;31morigin/masmas[m[33m, [m[1;32mmasmas[m[33m)[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Mon May 17 20:09:17 2021 +0700
+
+    Main ver2 (sua lai ket qua thu hoi)
+
+[33mcommit 107f46aacd0927a876d1a35165a99ce8b0cc59b7[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Mon May 17 16:31:39 2021 +0700
+
+    Hoan thanh main ver1
+
+[33mcommit cb58d1a24e4830626742522055e7122faf3842b1[m
+Merge: 2bd0cc5 d40ee60
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Mon May 17 11:18:41 2021 +0700
+
+    merge voi Minh + nut viewDetail(chua hoan thien)
+
+[33mcommit 2bd0cc5b34c0347d1fc321a4f3ca66ae3f442f1e[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Mon May 17 11:02:59 2021 +0700
+
+    add nut ViewDetail(chua hoan thien)
+
+[33mcommit d40ee608c979a72e315fc1e42db75961db4afa88[m
+Author: haiminh2001 <haiminhnguyen2001@gmail.com>
+Date:   Mon May 17 10:52:00 2021 +0700
+
+    update highlight color
+
+[33mcommit e9a3c724a8352be1bf8182065cd7a1c4310bec81[m
+Author: haiminh2001 <haiminhnguyen2001@gmail.com>
+Date:   Sun May 16 20:36:07 2021 +0700
+
+    update UI, random query
+
+[33mcommit eba56e88aed380c5b83910acf54b7eb897efd400[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 20:17:03 2021 +0700
+
+    xoa linh tinh
+
+[33mcommit 220495eacb569e5d84e210f09662f76f3cadcf20[m[33m ([m[1;32mMinh[m[33m)[m
+Merge: d988700 6f2f00c
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 20:08:29 2021 +0700
+
+    Merge voi Minh
+
+[33mcommit d98870082ca87982b0b024984bcaf8f2d3050f0b[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 16:48:29 2021 +0700
+
+    NextButton va sua mot so UI
+
+[33mcommit cb5df937abf394400f7eb66b5382cfc967bd5133[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 13:40:40 2021 +0700
+
+    check bang Query
+
+[33mcommit 0d3b3624eea0879a9c6cd0821288de448a843ee5[m
+Merge: 49c52bb 6c854ae
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 12:19:22 2021 +0700
+
+    Merge branch 'masmas' of https://github.com/duongmarcus71/Operating-System-Project into masmas
+
+[33mcommit 49c52bbe70fbcee30b2f80fcd7e88e0493f6f635[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sun May 16 12:19:15 2021 +0700
+
+    check code process Table
+
+[33mcommit 6c854ae7748f2db1cb0cba19e3b7fb2ce338c518[m
+Author: Mas Mas <37113329+duongmarcus71@users.noreply.github.com>
+Date:   Sun May 16 10:26:27 2021 +0700
+
+    add-query-tableview
+
+[33mcommit 993f79c03c523b20a0dde33b65a33d6fd04d75f4[m
+Author: Mas Mas <37113329+duongmarcus71@users.noreply.github.com>
+Date:   Sun May 16 10:25:34 2021 +0700
+
+    add-processRequest-label
+
+[33mcommit 81620fb7778dcb9a0b65fbde68f486f7ddec1e34[m
+Author: Mas Mas <37113329+duongmarcus71@users.noreply.github.com>
+Date:   Sun May 16 10:16:20 2021 +0700
+
+    add-query-tableview
+
+[33mcommit 9b1d10a609e307cc2ea2fac35b0fabac83f1361c[m
+Author: Mas Mas <37113329+duongmarcus71@users.noreply.github.com>
+Date:   Sun May 16 09:51:56 2021 +0700
+
+    Update Query.java
+
+[33mcommit c17e67b27f58cd2e56108ee4683ea28a355dd5f8[m
+Author: Mas Mas <37113329+duongmarcus71@users.noreply.github.com>
+Date:   Sun May 16 09:50:54 2021 +0700
+
+    add-Query-tableview
+
+[33mcommit 5df6f01b4d65beb3834ed18131eb82d8a31d1752[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sat May 15 23:25:23 2021 +0700
+
+    Sua lai in ra so luong P va R
+
+[33mcommit 8099915cad24cc2287eb31b0caed23c1ec8f807b[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sat May 15 23:15:29 2021 +0700
+
+    Sua width cot cua Process
+
+[33mcommit 1bca86c5f452f7b9d2f68d4e1d0e983240f3b21b[m
+Author: unknown <vuminhhieu1312@gmail.com>
+Date:   Sat May 15 22:17:08 2021 +0700
+
+    ok
+
+[33mcommit f6c708478db1f869bd404f4f26010b4901a527e5[m
+Author: unknown <you@example.com>
+Date:   Sat May 15 22:13:18 2021 +0700
+
+    test
+
+[33mcommit 43428854417c2206e29ceb209f408e529aa0fe5a[m
+Author: MasMas <duongmarcus71@gmail.com>
+Date:   Sat May 15 20:46:49 2021 +0700
+
+    display-some-tableviews
+
+[33mcommit 6f2f00c43a33eb012ed7ef32a987cb52f0185c46[m[33m ([m[1;31morigin/origin/Minh[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mUI_UPDATE[m[33m)[m
+Author: Lenovo <Lenovo@DESKTOP-3O8KMD9>
+Date:   Fri May 14 22:31:31 2021 +0700
+
+    test2
+
+[33mcommit 8f8f60e2152ceeaff4b5a09c44d18425be9ad392[m
+Author: Lenovo <Lenovo@DESKTOP-3O8KMD9>
+Date:   Fri May 14 22:30:34 2021 +0700
+
+    test1
+
+[33mcommit fdd7de950c072ea2264f450997e5d96cf6e64b48[m
+Author: Lenovo <Lenovo@DESKTOP-3O8KMD9>
+Date:   Fri May 14 22:29:21 2021 +0700
+
+    test
+
+[33mcommit b59ae7e303881822ad008435d08a17d80bdc1c08[m
+Author: Lenovo <Lenovo@DESKTOP-3O8KMD9>
+Date:   Fri May 14 22:26:33 2021 +0700
+
+    new
+
+[33mcommit 7e602e3c34a756d20bb18a06c780e7af89b77706[m
+Author: Lenovo <Lenovo@DESKTOP-3O8KMD9>
+Date:   Fri May 14 21:54:28 2021 +0700
+
+    new

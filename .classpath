@@ -8,5 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="G:/Documents/Chuyên ngành/Object Oriented Programming/fontawesomefx-8.2.jar"/>
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
 	<classpathentry kind="output" path="bin"/>
 </classpath>

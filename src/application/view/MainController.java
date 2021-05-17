@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
+<<<<<<< HEAD
+=======
+
+import application.Main;
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -84,7 +89,11 @@ public class MainController extends Pane implements Initializable  {
     private TableColumn<Map, String> requestQueryCol;
     
     @FXML
+<<<<<<< HEAD
     private Button viewDetailButton, nextStepButton;
+=======
+    private Button viewDetailButton, nextStepButton, home, exit;
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
     
     @FXML
     private Label processStateLabel;
@@ -211,6 +220,10 @@ public class MainController extends Pane implements Initializable  {
 	    	  Tc[i].setStyle( "-fx-alignment: CENTER;");
 	    	  Tc[i].setCellFactory(factory);
 	      }
+<<<<<<< HEAD
+=======
+	      table.getColumns().clear();
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
 	      table.getColumns().addAll(Tc);
 	}
 	
@@ -413,4 +426,33 @@ public class MainController extends Pane implements Initializable  {
 			turn = true;
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+	
+	public void home(ActionEvent e) {
+		// just in case system is processing viewDetail
+		systemStatus.setVisible(true);
+		viewDetailButton.setVisible(true);
+		resultQuery.setVisible(true);
+		nextStepButton.setVisible(true);
+		queryStatusLabel.setVisible(true);
+		processRequestLabel.setVisible(true);
+		processRequest.setVisible(true);
+		queryTable.setVisible(true);
+		processStateLabel.setVisible(false);
+		stateTable.setVisible(false);
+		backButton.setVisible(false);
+		stateNSButton.setVisible(false);
+		resultArea.setVisible(false);
+		
+		Main.stage.setScene(Main.sceneOpening);
+		this.initialize(null, null);
+	}
+	
+	public void exitApp(ActionEvent e) {
+		Main.stage.setScene(Main.sceneExit);
+	}
+	
+}
+>>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
