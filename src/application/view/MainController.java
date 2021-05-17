@@ -331,11 +331,11 @@ public class MainController extends Pane implements Initializable  {
 		reloadTable();
 	}
 	
-	public void writeResult(String ins) {
+	public void writeResult(String ins, Vector<Integer> output) {
 		resultArea.appendText(ins + " Process " + curProcess + ": ");
 		for(int i = 0; i < coordinator.getNResource(); ++ i) {
 			resultArea.appendText(coordinator.getResource().get(i).getName()
-				+ " " + coordinator.getProcess().get(curProcess).getNeed().get(i) + " đơn vị");
+				+ " " + output.get(i) + " đơn vị");
 			if(i == coordinator.getNResource() - 1) resultArea.appendText(".\n\n");
 			else resultArea.appendText(", ");
 		}
@@ -346,8 +346,8 @@ public class MainController extends Pane implements Initializable  {
 		if(stateTurn < coordinator.getTrace().size()) {
 			if(coordinator.getTrace().get(stateTurn) == true ) {
 				dataState.get(curProcess).setStatus("T");
-				writeResult("Cung cấp cho");
-				writeResult("Thu hồi từ");
+				writeResult("Cung cấp cho", coordinator.getProcess().get(curProcess).getNeed());
+				writeResult("Thu hồi từ", coordinator.getProcess().get(curProcess).getMax());
 				
 				for(int i = 0; i < coordinator.getNResource(); ++ i) {
 					int tmp = coordinator.getResource().get(i).getAvailable();
