@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
+
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -84,7 +86,7 @@ public class MainController extends Pane implements Initializable  {
     private TableColumn<Map, String> requestQueryCol;
     
     @FXML
-    private Button viewDetailButton, nextStepButton;
+    private Button viewDetailButton, nextStepButton, home, exit;
     
     @FXML
     private Label processStateLabel;
@@ -211,6 +213,7 @@ public class MainController extends Pane implements Initializable  {
 	    	  Tc[i].setStyle( "-fx-alignment: CENTER;");
 	    	  Tc[i].setCellFactory(factory);
 	      }
+	      table.getColumns().clear();
 	      table.getColumns().addAll(Tc);
 	}
 	
@@ -331,11 +334,11 @@ public class MainController extends Pane implements Initializable  {
 		reloadTable();
 	}
 	
-	public void writeResult(String ins) {
+	public void writeResult(String ins, Vector<Integer> output) {
 		resultArea.appendText(ins + " Process " + curProcess + ": ");
 		for(int i = 0; i < coordinator.getNResource(); ++ i) {
 			resultArea.appendText(coordinator.getResource().get(i).getName()
-				+ " " + coordinator.getProcess().get(curProcess).getNeed().get(i) + " đơn vị");
+				+ " " + output.get(i) + " đơn vị");
 			if(i == coordinator.getNResource() - 1) resultArea.appendText(".\n\n");
 			else resultArea.appendText(", ");
 		}
@@ -346,8 +349,8 @@ public class MainController extends Pane implements Initializable  {
 		if(stateTurn < coordinator.getTrace().size()) {
 			if(coordinator.getTrace().get(stateTurn) == true ) {
 				dataState.get(curProcess).setStatus("T");
-				writeResult("Cung cấp cho");
-				writeResult("Thu hồi từ");
+				writeResult("Cung cấp cho", coordinator.getProcess().get(curProcess).getNeed());
+				writeResult("Thu hồi từ", coordinator.getProcess().get(curProcess).getMax());
 				
 				for(int i = 0; i < coordinator.getNResource(); ++ i) {
 					int tmp = coordinator.getResource().get(i).getAvailable();
@@ -413,4 +416,29 @@ public class MainController extends Pane implements Initializable  {
 			turn = true;
 		}
 	}
+	
+	public void home(ActionEvent e) {
+		// just in case system is processing viewDetail
+		systemStatus.setVisible(true);
+		viewDetailButton.setVisible(true);
+		resultQuery.setVisible(true);
+		nextStepButton.setVisible(true);
+		queryStatusLabel.setVisible(true);
+		processRequestLabel.setVisible(true);
+		processRequest.setVisible(true);
+		queryTable.setVisible(true);
+		processStateLabel.setVisible(false);
+		stateTable.setVisible(false);
+		backButton.setVisible(false);
+		stateNSButton.setVisible(false);
+		resultArea.setVisible(false);
+		
+		Main.stage.setScene(Main.sceneOpening);
+		this.initialize(null, null);
+	}
+	
+	public void exitApp(ActionEvent e) {
+		Main.stage.setScene(Main.sceneExit);
+	}
+	
 }
