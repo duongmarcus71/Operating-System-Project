@@ -212,10 +212,8 @@ public class MainController extends Pane implements Initializable  {
 	    	  Tc[i].setStyle( "-fx-alignment: CENTER;");
 	    	  Tc[i].setCellFactory(factory);
 	      }
-<<<<<<< HEAD
-=======
-	      table.getColumns().clear();
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
+
+	      //table.getColumns().clear();
 	      table.getColumns().addAll(Tc);
 	}
 	

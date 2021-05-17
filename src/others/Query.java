@@ -28,11 +28,7 @@ public class Query {
 		request = new Vector<Integer>(need.size());
 
 		for(int i = 0; i < need.size(); ++ i) {
-<<<<<<< HEAD
 			double percentage = 1.0 / (rd.nextInt(4)+1);
-=======
-			double percentage = 1.0 / (rd.nextInt(2)+1);
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
 			if(percentage < 1) {
 				request.add(rd.nextInt(need.get(i) + 1));
 			}

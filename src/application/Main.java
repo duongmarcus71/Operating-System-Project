@@ -9,11 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class Main extends Application {
+public class Main {
 	public static Scene sceneMain;
 	public static Scene sceneOpening;
 	public static Scene sceneExit;
 	public static Stage stage;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -32,6 +33,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+		launch(args)
 	}
 }
