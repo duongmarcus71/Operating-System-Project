@@ -18,6 +18,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,7 +31,9 @@ import others.*;
 public class MainController extends Pane implements Initializable  {
 	private ObservableList<Resource> dataResource;
 	
-	private int Row;
+	private ObservableList<State> dataState;
+	
+	private int row, stateTurn, curProcess;
 	
 	private ObservableList<Map<String, String>> dataQuery; 
 	
@@ -38,16 +41,20 @@ public class MainController extends Pane implements Initializable  {
 	
 	private Query q;
 	
-	private boolean turn,fTurn;
+	private TableViewSelectionModel a;
+	
+	private boolean turn, fTurn;
+	
+	private Vector<Integer> backup;
 	
 	@FXML
-	private TableView<String[]> MAX;
+	private TableView<String[]> max;
 	
 	@FXML
-	private TableView<String[]> ALLOCATE;
+	private TableView<String[]> allocate;
 	
 	@FXML
-	private TableView<String[]> NEED;
+	private TableView<String[]> need;
 	
     @FXML
     private Label nOfRLabel, nOfPLabel, queryStatusLabel, processRequestLabel;
@@ -94,14 +101,44 @@ public class MainController extends Pane implements Initializable  {
     @FXML
     private TextArea resultArea;
     
+    Callback factory = new Callback<TableColumn<String[], String>, TableCell<String[], String>>(){
+	    public TableCell<String[], String> call(TableColumn<String[], String> param) {
+	        return new TableCell<String[], String>() {
+	            @Override
+	            public void updateIndex(int i) {
+	                super.updateIndex(i);
+	            }
+	            
+	            @Override
+	            protected void updateItem(String item, boolean empty) {
+	                super.updateItem(item, empty);
+	                // assign item's toString value as text
+	                if (empty || item == null) {
+	                    setText(null);
+	                } else {
+	                    setText(item.toString());
+	                    
+	                    if(this.getIndex() == row) {
+	                    	this.setStyle("-fx-background-color: #155cd4; -fx-text-fill:white");
+	                    }
+	                    else {
+	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
+	                    }
+	                }
+	            }
+	        };
+	    }
+	};
+    
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		// init process tableview
 		coordinator = new Coordinator ();
-		initTable(MAX);
-		initTable(ALLOCATE);
-		initTable(NEED);
+		initTable(max);
+		initTable(allocate);
+		initTable(need);
 		
 		// init number of process and resource
 		nOfP.setText(Integer.toString(coordinator.getNProcess()));
@@ -111,7 +148,15 @@ public class MainController extends Pane implements Initializable  {
 		dataResource = FXCollections.observableArrayList();
 		nameResourceCol.setCellValueFactory(new PropertyValueFactory<Resource, String>("name"));
 		availableResourceCol.setCellValueFactory(new PropertyValueFactory<Resource, Integer>("available"));
-		resourceTable.setItems(dataResource); 
+		resourceTable.setItems(dataResource);
+		
+		// init state tableview
+		dataState = FXCollections.<State>observableArrayList();
+		nameProcessCol.setCellValueFactory(new PropertyValueFactory<State, String>("name"));
+		stateProcessCol.setCellValueFactory(new PropertyValueFactory<State, String>("status"));
+		nameProcessCol.setCellFactory(factory);
+		stateProcessCol.setCellFactory(factory);
+		stateTable.setItems(dataState);
 		
 		// init query tableview
 		dataQuery = FXCollections.<Map<String, String>>observableArrayList();
@@ -125,7 +170,7 @@ public class MainController extends Pane implements Initializable  {
 		fTurn = false;
 		q = new Query(coordinator.getNResource());
 		processRequest.setVisible(false);
-		Row = -1;
+		row = -1;
 	}
 	
 	public void initUI() {
@@ -133,6 +178,13 @@ public class MainController extends Pane implements Initializable  {
 		viewDetailButton.setVisible(false);
 		resultQuery.setVisible(false);
 		showTable();
+	}
+	
+	public void initStateTable() {
+		dataState.clear();
+		for(int i = 0; i < coordinator.getNProcess(); ++ i) {
+			dataState.add(new State("Process " + i, "F"));
+		}
 	}
 	
 	public void initTable(TableView table) {
@@ -172,9 +224,9 @@ public class MainController extends Pane implements Initializable  {
 		int index = 0;
 		get Get = (p) -> {
 			Vector<Integer> v = new Vector<Integer>();
-			if(table == MAX) v = p.getMax();
-			if(table == ALLOCATE) v = p.getAllocation();
-			if(table == NEED) v = p.getNeed();
+			if(table == max) v = p.getMax();
+			if(table == allocate) v = p.getAllocation();
+			if(table == need) v = p.getNeed();
 			return v;
 		};
 		
@@ -189,35 +241,7 @@ public class MainController extends Pane implements Initializable  {
 		ObservableList<String[]> data1 = FXCollections.observableArrayList(data);
 		table.setItems(data1);
 	}
-	
-    Callback factory = new Callback<TableColumn<String[], String>, TableCell<String[], String>>(){
-	    public TableCell<String[], String> call(TableColumn<String[], String> param) {
-	        return new TableCell<String[], String>() {
-	            @Override
-	            public void updateIndex(int i) {
-	                super.updateIndex(i);
-	            }
-	            @Override
-	            protected void updateItem(String item, boolean empty) {
-	                super.updateItem(item, empty);
-	                // assign item's toString value as text
-	                if (empty || item == null) {
-	                    setText(null);
-	                } else {
-	                    setText(item.toString());
-	                    
-	                    if(this.getIndex() == Row) {
-	                    	this.setStyle("-fx-background-color: #155cd4; -fx-text-fill:white");
-	                    }
-	                    else {
-	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
-	                    }
-	                }
-	            }
-	        };
-	    }
-	};
-	
+
     public void resourceTable(Vector<Resource> r) {
 		dataResource.clear();
 		dataResource.addAll(r);
@@ -239,10 +263,18 @@ public class MainController extends Pane implements Initializable  {
 	}
 	
 	public void showTable() {
-		setTable(MAX);
-		setTable(ALLOCATE);
-		setTable(NEED);
+		setTable(max);
+		setTable(allocate);
+		setTable(need);
 		resourceTable(coordinator.getResource());
+	}
+	
+	public void reloadTable() {
+		stateTable.refresh();
+		max.refresh();
+		allocate.refresh();
+		need.refresh();
+		resourceTable.refresh();
 	}
 	
 	@FXML
@@ -261,6 +293,14 @@ public class MainController extends Pane implements Initializable  {
 		backButton.setVisible(true);
 		stateNSButton.setVisible(true);
 		resultArea.setVisible(true);
+		
+		stateTurn = 0;
+		curProcess = 0;
+		initStateTable();
+		backup = new Vector<Integer>();
+		resultArea.clear();
+		row = 0;
+		reloadTable();
 	}
 	
 	@FXML
@@ -279,11 +319,50 @@ public class MainController extends Pane implements Initializable  {
 		backButton.setVisible(false);
 		stateNSButton.setVisible(false);
 		resultArea.setVisible(false);
+		
+		for(int i = 0; i < coordinator.getNResource(); ++ i) {
+			int tmp = coordinator.getResource().get(i).getAvailable();
+			for(int j: backup) {
+				tmp -= coordinator.getProcess().get(j).getMax().get(i);
+			}
+			coordinator.getResource().get(i).setAvailable( tmp );
+		}
+		row = q.getPos();
+		reloadTable();
+	}
+	
+	public void writeResult(String ins) {
+		resultArea.appendText(ins + " Process " + curProcess + ": ");
+		for(int i = 0; i < coordinator.getNResource(); ++ i) {
+			resultArea.appendText(coordinator.getResource().get(i).getName()
+				+ " " + coordinator.getProcess().get(curProcess).getNeed().get(i) + " đơn vị");
+			if(i == coordinator.getNResource() - 1) resultArea.appendText(".\n\n");
+			else resultArea.appendText(", ");
+		}
 	}
 	
 	@FXML
-	public void stateNextStep() {
-		
+	public void stateNextStep(ActionEvent e) {
+		if(stateTurn < coordinator.getTrace().size()) {
+			if(coordinator.getTrace().get(stateTurn) == true ) {
+				dataState.get(curProcess).setStatus("T");
+				writeResult("Cung cấp cho");
+				writeResult("Thu hồi từ");
+				
+				for(int i = 0; i < coordinator.getNResource(); ++ i) {
+					int tmp = coordinator.getResource().get(i).getAvailable();
+					tmp += coordinator.getProcess().get(curProcess).getMax().get(i);
+					coordinator.getResource().get(i).setAvailable( tmp );
+				}
+				backup.add(curProcess);
+			}
+			
+			row = curProcess;
+			reloadTable();
+			stateTurn ++;
+			curProcess ++;
+			if(curProcess == coordinator.getNProcess()) curProcess = 0; 
+		} else stateNSButton.setVisible(false);
 	}
 	
 	@FXML
@@ -306,7 +385,7 @@ public class MainController extends Pane implements Initializable  {
 				
 				if(vO.cmp(m, q.getRequest(), work)) {
 					coordinator.changeState(q.getPos(), q.getRequest());
-					Row = q.getPos();
+					row = q.getPos();
 					showTable();
 					
 					if(coordinator.isSafe()) {

@@ -49,10 +49,10 @@
          </font>
       </Label>
       <Text layoutX="1039.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX" wrappingWidth="55.611328125" />
-      <TableView fx:id="MAX" layoutX="862.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
-      <TableView fx:id="ALLOCATE" layoutX="6.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
+      <TableView fx:id="max" layoutX="862.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
+      <TableView fx:id="allocate" layoutX="6.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
       <Text layoutX="166.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALLOCATE" />
-      <TableView fx:id="NEED" layoutX="434.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
+      <TableView fx:id="need" layoutX="434.0" layoutY="69.0" prefHeight="291.0" prefWidth="410.0" />
       <Text layoutX="613.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEED" />
       <TableView fx:id="resourceTable" layoutX="257.0" layoutY="375.0" prefHeight="291.0" prefWidth="189.0">
         <columns>
@@ -94,6 +94,6 @@
       </TableView>
       <Button fx:id="backButton" layoutX="1039.0" layoutY="628.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="89.0" text="Back" visible="false" />
       <Button fx:id="stateNSButton" layoutX="1149.0" layoutY="628.0" mnemonicParsing="false" onAction="#stateNextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" visible="false" />
-      <TextArea fx:id="resultArea" layoutX="799.0" layoutY="374.0" prefHeight="244.0" prefWidth="473.0" visible="false" />
+      <TextArea fx:id="resultArea" editable="false" layoutX="799.0" layoutY="374.0" prefHeight="244.0" prefWidth="473.0" visible="false" />
    </children>
 </Pane>
