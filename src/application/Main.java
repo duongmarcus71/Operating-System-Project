@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-package application;
-	
-import application.view.*;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-
-public class Main extends Application {
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			Parent root = FXMLLoader.load(MainController.class.getResource("Main.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main(String[] args) {
-		 launch(args);		 
-	}
-}
-=======
 package application;
 	
 import application.view.*;
@@ -62,7 +32,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		 launch(args);		 
+		launch(args);
 	}
 }
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab

@@ -5,11 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
-<<<<<<< HEAD
-=======
-
 import application.Main;
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -89,11 +85,7 @@ public class MainController extends Pane implements Initializable  {
     private TableColumn<Map, String> requestQueryCol;
     
     @FXML
-<<<<<<< HEAD
-    private Button viewDetailButton, nextStepButton;
-=======
     private Button viewDetailButton, nextStepButton, home, exit;
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
     
     @FXML
     private Label processStateLabel;
@@ -426,9 +418,6 @@ public class MainController extends Pane implements Initializable  {
 			turn = true;
 		}
 	}
-<<<<<<< HEAD
-}
-=======
 	
 	public void home(ActionEvent e) {
 		// just in case system is processing viewDetail
@@ -455,4 +444,3 @@ public class MainController extends Pane implements Initializable  {
 	}
 	
 }
->>>>>>> 5680ba43d53f014f167bc1c765cf19bbc7f5a6ab
