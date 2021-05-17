@@ -30,7 +30,7 @@ public class Query {
 		for(int i = 0; i < need.size(); ++ i) {
 			double percentage = 1.0 / (rd.nextInt(4)+1);
 			if(percentage < 1) {
-				request.add(rd.nextInt(need.get(i)));
+				request.add(rd.nextInt(need.get(i) + 1));
 			}
 			else {
 				request.add(rd.nextInt(max.get(i)));

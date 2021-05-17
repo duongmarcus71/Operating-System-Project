@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -74,7 +75,22 @@ public class MainController extends Pane implements Initializable  {
     
     @FXML
     private Button viewDetailButton, nextStepButton;
-
+    
+    @FXML
+    private Label processStateLabel;
+    
+    @FXML
+    private TableView<State> stateTable;
+    
+    @FXML
+    private TableColumn<State, String> nameProcessCol, stateProcessCol;
+    
+    @FXML
+    private Button backButton, stateNSButton;
+    
+    @FXML
+    private TextArea resultArea;
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -198,6 +214,42 @@ public class MainController extends Pane implements Initializable  {
 	
 	@FXML
 	public void showViewDetail(ActionEvent e) {
+		systemStatus.setVisible(false);
+		viewDetailButton.setVisible(false);
+		resultQuery.setVisible(false);
+		nextStepButton.setVisible(false);
+		queryStatusLabel.setVisible(false);
+		processRequestLabel.setVisible(false);
+		processRequest.setVisible(false);
+		queryTable.setVisible(false);
+		
+		processStateLabel.setVisible(true);
+		stateTable.setVisible(true);
+		backButton.setVisible(true);
+		stateNSButton.setVisible(true);
+		resultArea.setVisible(true);
+	}
+	
+	@FXML
+	public void back(ActionEvent e) {
+		systemStatus.setVisible(true);
+		viewDetailButton.setVisible(true);
+		resultQuery.setVisible(true);
+		nextStepButton.setVisible(true);
+		queryStatusLabel.setVisible(true);
+		processRequestLabel.setVisible(true);
+		processRequest.setVisible(true);
+		queryTable.setVisible(true);
+		
+		processStateLabel.setVisible(false);
+		stateTable.setVisible(false);
+		backButton.setVisible(false);
+		stateNSButton.setVisible(false);
+		resultArea.setVisible(false);
+	}
+	
+	@FXML
+	public void stateNextStep() {
 		
 	}
 	

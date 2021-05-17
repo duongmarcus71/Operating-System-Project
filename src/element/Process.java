@@ -21,7 +21,7 @@ public class Process {
 		}
 		
 		for(int i = 0; i < n; ++ i) {
-			allocation.add(rd.nextInt(max.get(i))+1);
+			allocation.add(rd.nextInt(max.get(i)));
 		}
 		
 		for(int i = 0; i < n; ++ i) {

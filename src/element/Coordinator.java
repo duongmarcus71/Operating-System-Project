@@ -16,6 +16,8 @@ public class Coordinator {
 	
 	private Vector<Process> process;
 	
+	private Vector<Boolean> trace;
+	
 	private int nProcess;
 	
 	private int nResource;
@@ -23,6 +25,7 @@ public class Coordinator {
 	public Coordinator() {
 		
 		Random rd = new Random();
+		trace = new Vector<Boolean>();
 		nProcess = rd.nextInt(MAX_PROCESS) + 1;
 		nResource = rd.nextInt(MAX_RESOURCE) + 1;
 		resource = new Vector<Resource>(nResource);
@@ -41,6 +44,7 @@ public class Coordinator {
 		
 		Vector<Integer> work = new Vector<Integer>(nResource);
 		Vector<Boolean> finish = new Vector<Boolean>();
+		trace.clear();
 		for(int i = 0; i < nProcess; ++ i) {
 			finish.add(false);
 		}
@@ -58,7 +62,8 @@ public class Coordinator {
 					finish.set(i, true);
 					work = vO.add(nResource, work, process.get(i).getAllocation());
 					flag = true;
-				}
+					trace.add(true);
+				} else trace.add(false);
 			}
 		}
 		
@@ -93,5 +98,9 @@ public class Coordinator {
 
 	public Vector<Process> getProcess() {
 		return process;
+	}
+	
+	public Vector<Boolean> getTrace() {
+		return trace;
 	}
 }
