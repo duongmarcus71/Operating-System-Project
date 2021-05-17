@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -27,6 +28,8 @@ import others.*;
 
 public class MainController extends Pane implements Initializable  {
 	private ObservableList<Resource> dataResource;
+	
+	private int Row = -1;
 	
 	private ObservableList<Map<String, String>> dataQuery; 
 	
@@ -137,6 +140,7 @@ public class MainController extends Pane implements Initializable  {
 		           }
 		      });
 	    	  Tc[i].setStyle( "-fx-alignment: CENTER;");
+	    	  Tc[i].setCellFactory(factory);
 	      }
 	      table.getColumns().addAll(Tc);
 	}
@@ -168,7 +172,33 @@ public class MainController extends Pane implements Initializable  {
 		ObservableList<String[]> data1 = FXCollections.observableArrayList(data);
 		table.setItems(data1);
 	}
-	
+	Callback factory = new Callback<TableColumn<String[], String>, TableCell<String[], String>>(){
+	    public TableCell<String[], String> call(TableColumn<String[], String> param) {
+	        return new TableCell<String[], String>() {
+	            @Override
+	            public void updateIndex(int i) {
+	                super.updateIndex(i);
+	            }
+	            @Override
+	            protected void updateItem(String item, boolean empty) {
+	                super.updateItem(item, empty);
+	                // assign item's toString value as text
+	                if (empty || item == null) {
+	                    setText(null);
+	                } else {
+	                    setText(item.toString());
+	                    
+	                    if(this.getIndex() == Row) {
+	                    	this.setStyle("-fx-background-color: #155cd4; -fx-text-fill:white");
+	                    }
+	                    else {
+	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
+	                    }
+	                }
+	            }
+	        };
+	    }
+	};
 	public void resourceTable(Vector<Resource> r) {
 		dataResource.clear();
 		dataResource.addAll(r);
@@ -221,6 +251,7 @@ public class MainController extends Pane implements Initializable  {
 				
 				if(vO.cmp(m, q.getRequest(), work)) {
 					coordinator.changeState(q.getPos(), q.getRequest());
+					Row = q.getPos();
 					showTable();
 					
 					if(coordinator.isSafe()) {
