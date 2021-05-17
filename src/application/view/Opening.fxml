@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1277.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OpeningController">
+   <children>
+      <Button fx:id="generateButton" layoutX="569.0" layoutY="376.0" mnemonicParsing="false" onAction="#generate" prefHeight="56.0" prefWidth="140.0" text="Generate!" />
+      <Label fx:id="title" layoutX="409.0" layoutY="247.0" prefHeight="86.0" prefWidth="461.0" text="   Banker's Algorithm in Operating System" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
