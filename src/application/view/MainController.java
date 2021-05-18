@@ -171,7 +171,7 @@ public class MainController extends Pane implements Initializable  {
 		turn = false;
 		fTurn = false;
 		q = new Query(coordinator.getNResource());
-		processRequest.setVisible(false);
+		processRequest.setText("");
 		row = -1;
 	}
 	
@@ -427,7 +427,7 @@ public class MainController extends Pane implements Initializable  {
 		processRequestLabel.setVisible(true);
 		processRequest.setVisible(true);
 		queryTable.setVisible(true);
-		processStateLabel.setVisible(false);
+     	processStateLabel.setVisible(false);
 		stateTable.setVisible(false);
 		backButton.setVisible(false);
 		stateNSButton.setVisible(false);
