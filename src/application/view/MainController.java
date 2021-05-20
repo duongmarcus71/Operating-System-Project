@@ -42,6 +42,8 @@ import others.*;
 public class MainController extends Pane implements Initializable  {
 	private ObservableList<Resource> dataResource;
 	
+	private static String alertColor;
+	
 	private ObservableList<State> dataState;
 	
 	private int row, stateTurn, curProcess;
@@ -130,12 +132,28 @@ public class MainController extends Pane implements Initializable  {
 	                } else {
 	                    setText(item.toString());
 	                    
-	                    if(this.getIndex() == row) {
-	                    	this.setStyle("-fx-background-color: #155cd4; -fx-text-fill:white");
+	                    if(this.getIndex() == row ) {
+	                    	if(alertColor.equals("green")) {
+	                    		this.setStyle("-fx-background-color: #42ce35; -fx-text-fill:white");
+	                    	}
+	                    	if(alertColor.equals("fullRed")) {
+	                    		this.setStyle("-fx-background-color: #aa2222; -fx-text-fill:white");
+	                    	}
+	                    	if(alertColor.equals("red")) {
+	                    		for(Integer i : resourceFault) {
+	                    			String s = "R" + i.toString();
+	                    			if(this.getTableColumn().getText().equals(s)) {
+	                    				this.setStyle("-fx-background-color: #aa2222; -fx-text-fill:white");
+	                    				break;
+	                    			}
+	                    		}
+	                    	
+	                    	}
 	                    }
 	                    else {
 	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
 	                    }
+	                    
 	                }
 	            }
 	        };
@@ -386,7 +404,11 @@ public class MainController extends Pane implements Initializable  {
 		if(turn == true) {
 			queryTable(coordinator.getNProcess());
 			turn = false;
+			row = -1;
+			showTable();
 		} else {
+			
+			row = q.getPos();
 			VectorOperator vO = new VectorOperator();
 			int m = coordinator.getNResource();
 			
@@ -395,20 +417,21 @@ public class MainController extends Pane implements Initializable  {
 				for(int i = 0; i < m; ++ i) {
 					work.add(coordinator.getResource().get(i).getAvailable());
 				}
-				
 				if(vO.cmp(m, q.getRequest(), work)) {
 					coordinator.changeState(q.getPos(), q.getRequest());
-					row = q.getPos();
-					showTable();
+					resourceFault = null;
 					
 					if(coordinator.isSafe()) {
 						resultQuery.setText("Distribute Successfully!");
 						systemStatus.setText("Safe");
 						viewDetailButton.setVisible(true);
+						alertColor = "green";
+						
 					} else {
 						resultQuery.setText("Block! System unsafe");
 						systemStatus.setText("Unsafe");
 						coordinator.changeState(q.getPos(), vO.reverse(q.getRequest()));
+						alertColor = "fullRed";
 					}
 					
 					if(fTurn == false) fTurn = true;
@@ -419,15 +442,18 @@ public class MainController extends Pane implements Initializable  {
 					//System.out.println(this.resourceFault.toString());
 					resultQuery.setText("Block! Not enough available resources");
 					resultQuery.setVisible(true);
+					alertColor ="red";
 				}
 			} else {
 				this.resourceFault = VectorOperator.resourceFault;
 				//System.out.println(this.resourceFault.toString());
 				resultQuery.setText("Error! Request exceeds resource declaration");
 				resultQuery.setVisible(true);
+				alertColor = "red";
 			}
-			
+			showTable();
 			turn = true;
+			System.out.println(resourceFault);
 		}
 	}
 	
