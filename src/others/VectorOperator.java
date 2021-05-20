@@ -3,13 +3,18 @@ package others;
 import java.util.Vector;
 
 public class VectorOperator {
+	public static Vector<Integer> resourceFault;
 	
 	public boolean cmp ( int n, Vector<Integer> x, Vector<Integer> y) {
-		
+		resourceFault = new Vector<Integer>();
+		boolean flag = true;
 		for(int i = 0; i < n; ++ i) {
-			if( x.get(i) > y.get(i) ) return false;
+			if( x.get(i) > y.get(i) ) {
+				flag = false;
+				resourceFault.add(i);
+			}
 		}
-		return true;
+		return flag;
 	}
 	
 	public Vector<Integer> add(int n, Vector<Integer> x, Vector<Integer> y) {
