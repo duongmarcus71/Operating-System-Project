@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="792.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
    <children>
-      <Button fx:id="nextStepButton" layoutX="877.0" layoutY="618.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
+      <Button fx:id="nextStepButton" layoutX="1124.0" layoutY="676.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
       <Label fx:id="nOfPLabel" layoutX="7.0" layoutY="59.0" prefHeight="27.0" prefWidth="178.0" text="Number of processes:">
          <font>
             <Font size="18.0" />
