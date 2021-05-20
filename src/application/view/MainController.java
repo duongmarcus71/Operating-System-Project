@@ -1,19 +1,26 @@
 package application.view;
 
+import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
+
 import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -24,7 +31,9 @@ import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import element.*;
 import element.Process;
@@ -48,6 +57,7 @@ public class MainController extends Pane implements Initializable  {
 	private boolean turn, fTurn;
 	
 	private Vector<Integer> backup;
+	private static Vector<Integer> resourceFault;
 	
 	@FXML
 	private TableView<String[]> max;
@@ -405,10 +415,14 @@ public class MainController extends Pane implements Initializable  {
 					else resultQuery.setVisible(true);
 					systemStatus.setVisible(true);
 				} else {
+					this.resourceFault = VectorOperator.resourceFault;
+					//System.out.println(this.resourceFault.toString());
 					resultQuery.setText("Block! Not enough available resources");
 					resultQuery.setVisible(true);
 				}
 			} else {
+				this.resourceFault = VectorOperator.resourceFault;
+				//System.out.println(this.resourceFault.toString());
 				resultQuery.setText("Error! Request exceeds resource declaration");
 				resultQuery.setVisible(true);
 			}
@@ -441,4 +455,35 @@ public class MainController extends Pane implements Initializable  {
 		Main.stage.setScene(Main.sceneExit);
 	}
 	
+	public void sceneCapture(ActionEvent e) {
+		boolean isCaptured = true;
+		try {
+			WritableImage writableImage = Main.sceneMain.snapshot(null);
+			
+			FileChooser fileChooser = new FileChooser();
+			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File file = fileChooser.showSaveDialog(Main.stage);
+            
+            ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "png", file);
+		}
+		catch (Exception ex) {
+        	isCaptured = false;
+        	Alert inform = new Alert(Alert.AlertType.INFORMATION);
+			inform.setHeaderText("Chưa lưu ảnh!");
+			inform.showAndWait();
+        }
+		if(isCaptured) {
+			Alert inform = new Alert(Alert.AlertType.INFORMATION);
+			inform.setHeaderText("Lưu ảnh thành công!");
+			inform.showAndWait();
+		}
+		this.setOnMouseEntered(mouseEvent -> {
+			this.getStyleClass().add("btnCaptureGPEntered");
+		});
+		this.setOnMouseExited(mouseEvent -> {
+			this.getStyleClass().remove(4);
+		});
+		
+	}
 }
