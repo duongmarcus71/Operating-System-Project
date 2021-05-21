@@ -151,7 +151,8 @@ public class MainController extends Pane implements Initializable  {
 	                    	}
 	                    }
 	                    else {
-	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
+	                    	this.setStyle(null);
+	                    	
 	                    }
 	                    
 	                }
