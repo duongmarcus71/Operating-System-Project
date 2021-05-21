@@ -59,6 +59,7 @@ public class MainController extends Pane implements Initializable  {
 	private boolean turn, fTurn;
 	
 	private Vector<Integer> backup;
+	
 	private static Vector<Integer> resourceFault;
 	
 	@FXML
@@ -151,7 +152,7 @@ public class MainController extends Pane implements Initializable  {
 	                    	}
 	                    }
 	                    else {
-	                    	this.setStyle("-fx-background-color: white; -fx-text-fill:black");
+	                    	this.setStyle(null);
 	                    }
 	                    
 	                }
@@ -453,7 +454,7 @@ public class MainController extends Pane implements Initializable  {
 			}
 			showTable();
 			turn = true;
-			System.out.println(resourceFault);
+			//System.out.println(resourceFault);
 		}
 	}
 	

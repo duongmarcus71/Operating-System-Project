@@ -9,103 +9,103 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="792.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainController">
    <children>
-      <Button fx:id="nextStepButton" layoutX="1124.0" layoutY="676.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
-      <Label fx:id="nOfPLabel" layoutX="7.0" layoutY="59.0" prefHeight="27.0" prefWidth="178.0" text="Number of processes:">
+      <Button fx:id="nextStepButton" layoutX="1108.0" layoutY="570.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" />
+      <Label fx:id="nOfPLabel" layoutX="7.0" layoutY="28.0" prefHeight="27.0" prefWidth="178.0" text="Number of processes:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="nOfP" layoutX="182.0" layoutY="59.0" prefHeight="27.0" prefWidth="30.0" textFill="#d41515">
+      <Label fx:id="nOfP" layoutX="182.0" layoutY="28.0" prefHeight="27.0" prefWidth="30.0" textFill="#d41515">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="nOfRLabel" layoutX="7.0" layoutY="458.0" text="Number of resources:">
+      <Label fx:id="nOfRLabel" layoutX="10.0" layoutY="402.0" text="Number of resources:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="nOfR" layoutX="182.0" layoutY="458.0" prefHeight="27.0" prefWidth="30.0" textFill="#d41515">
+      <Label fx:id="nOfR" layoutX="182.0" layoutY="402.0" prefHeight="27.0" prefWidth="30.0" textFill="#d41515">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="systemStatusLabel" layoutX="880.0" layoutY="484.0" text="System Status:">
+      <Label fx:id="systemStatusLabel" layoutX="880.0" layoutY="402.0" text="System Status:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="systemStatus" layoutX="1016.0" layoutY="484.0" text="Label">
+      <Label fx:id="systemStatus" layoutX="1004.0" layoutY="402.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="viewDetailButton" layoutX="1157.0" layoutY="485.0" mnemonicParsing="false" onAction="#showViewDetail" text="View Detail" />
-      <Label fx:id="queryStatusLabel" layoutX="880.0" layoutY="530.0" text="Query Status:">
+      <Button fx:id="viewDetailButton" layoutX="1115.0" layoutY="403.0" mnemonicParsing="false" onAction="#showViewDetail" text="View Detail" />
+      <Label fx:id="queryStatusLabel" layoutX="442.0" layoutY="402.0" text="Query Status:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Text layoutX="1068.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX" wrappingWidth="55.611328125" />
-      <TableView fx:id="max" layoutX="863.0" layoutY="117.0" prefHeight="291.0" prefWidth="410.0" />
-      <TableView fx:id="allocate" layoutX="7.0" layoutY="117.0" prefHeight="291.0" prefWidth="410.0" />
-      <Text layoutX="167.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALLOCATE" />
-      <TableView fx:id="need" layoutX="435.0" layoutY="117.0" prefHeight="291.0" prefWidth="410.0" />
-      <Text layoutX="614.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEED" />
-      <TableView fx:id="resourceTable" layoutX="228.0" layoutY="458.0" prefHeight="291.0" prefWidth="189.0">
+      <Text layoutX="1046.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX" wrappingWidth="29.53125" />
+      <TableView fx:id="max" layoutX="856.0" layoutY="90.0" prefHeight="291.0" prefWidth="410.0" />
+      <TableView fx:id="allocate" layoutX="7.0" layoutY="90.0" prefHeight="291.0" prefWidth="410.0" />
+      <Text layoutX="184.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALLOCATE" />
+      <TableView fx:id="need" layoutX="435.0" layoutY="90.0" prefHeight="291.0" prefWidth="410.0" />
+      <Text layoutX="625.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEED" />
+      <TableView fx:id="resourceTable" layoutX="228.0" layoutY="402.0" prefHeight="291.0" prefWidth="189.0">
         <columns>
           <TableColumn fx:id="nameResourceCol" prefWidth="100.79998397827148" text="Name" />
           <TableColumn fx:id="availableResourceCol" prefWidth="85.60000610351562" text="Available" />
         </columns>
       </TableView>
-      <TableView fx:id="queryTable" layoutX="656.0" layoutY="458.0" prefHeight="291.0" prefWidth="189.0">
+      <TableView fx:id="queryTable" layoutX="655.0" layoutY="402.0" prefHeight="291.0" prefWidth="189.0">
         <columns>
           <TableColumn fx:id="nameQueryCol" prefWidth="92.79998779296875" text="Name" />
           <TableColumn fx:id="requestQueryCol" prefWidth="93.60003662109375" text="Request" />
         </columns>
       </TableView>
-      <Label fx:id="processRequestLabel" layoutX="435.0" layoutY="458.0" prefHeight="27.0" prefWidth="137.0" text="Process Request:">
+      <Label fx:id="processRequestLabel" layoutX="442.0" layoutY="438.0" prefHeight="27.0" prefWidth="137.0" text="Process Request:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="processRequest" layoutX="618.0" layoutY="410.0" textFill="#d41515">
+      <Label fx:id="processRequest" layoutX="592.0" layoutY="437.0" textFill="#d41515">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="resultQuery" layoutX="880.0" layoutY="576.0" text="Label">
+      <Label fx:id="resultQuery" layoutX="880.0" layoutY="465.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="processStateLabel" layoutX="476.0" layoutY="375.0" text="Process State:" visible="false">
+      <Label fx:id="processStateLabel" layoutX="440.0" layoutY="402.0" text="Process State:" visible="false">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="stateTable" layoutX="593.0" layoutY="375.0" prefHeight="291.0" prefWidth="189.0" visible="false">
+      <TableView fx:id="stateTable" layoutX="561.0" layoutY="402.0" prefHeight="291.0" prefWidth="189.0" visible="false">
          <columns>
             <TableColumn fx:id="nameProcessCol" prefWidth="92.79998779296875" text="Name" />
             <TableColumn fx:id="stateProcessCol" prefWidth="93.60003662109375" text="Finish" />
          </columns>
       </TableView>
-      <Button fx:id="backButton" layoutX="1039.0" layoutY="628.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="89.0" text="Back" visible="false" />
-      <Button fx:id="stateNSButton" layoutX="1149.0" layoutY="628.0" mnemonicParsing="false" onAction="#stateNextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" visible="false" />
-      <TextArea fx:id="resultArea" editable="false" layoutX="799.0" layoutY="374.0" prefHeight="244.0" prefWidth="473.0" visible="false" />
-      <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#home" text="HOME" textFill="#224de7">
+      <Button fx:id="backButton" layoutX="1046.0" layoutY="639.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="89.0" text="Back" visible="false" />
+      <Button fx:id="stateNSButton" layoutX="1149.0" layoutY="639.0" mnemonicParsing="false" onAction="#stateNextStep" prefHeight="38.0" prefWidth="89.0" text="Next Step" visible="false" />
+      <TextArea fx:id="resultArea" editable="false" layoutX="768.0" layoutY="402.0" prefHeight="226.0" prefWidth="498.0" visible="false" />
+      <Button layoutX="1036.0" layoutY="23.0" mnemonicParsing="false" onAction="#home" text="HOME" textFill="#224de7">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="188.0" layoutY="15.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="36.0" prefWidth="69.0" text="EXIT" textFill="#224de7">
+      <Button layoutX="1193.0" layoutY="23.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="36.0" prefWidth="69.0" text="EXIT" textFill="#224de7">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="102.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneCapture" prefHeight="36.0" prefWidth="69.0" text="SAVE" textFill="#224de7" textOverrun="CLIP">
+      <Button layoutX="1115.0" layoutY="23.0" mnemonicParsing="false" onAction="#sceneCapture" prefHeight="36.0" prefWidth="69.0" text="SAVE" textFill="#224de7" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
