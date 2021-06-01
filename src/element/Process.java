@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class Process {
 	
-	private Vector<Integer> max;
-	private Vector<Integer> allocation;
-	private Vector<Integer> need;
+	private Vector<Integer> max;   // số lượng lớn nhất mỗi kiểu TN của từng tiến trình
+	private Vector<Integer> allocation;   // số lượng mỗi kiểu TN đã cấp cho tiến trình
+	private Vector<Integer> need;   // số lượng mỗi kiểu TN còn cần đến của từng tiến trình
 	
 	public Process(int n, Vector<Resource> resource) {
 		

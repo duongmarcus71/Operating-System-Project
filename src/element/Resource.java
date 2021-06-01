@@ -1,8 +1,8 @@
 package element;
 
 public class Resource {
-	private String name;
-	private int available;
+	private String name;   
+	private int available;   // số đơn vị tài nguyên sẵn có trong hệ thống
 	
 	public Resource(int n, String name) {
 		this.name = name;

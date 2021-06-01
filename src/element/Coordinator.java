@@ -12,15 +12,15 @@ public class Coordinator {
 	
 	private final int MAX_RESOURCE = 10;
 	
-	private Vector<Resource> resource;
+	private Vector<Resource> resource;   // danh sách các tài nguyên của hệ thống
 	
-	private Vector<Process> process;
+	private Vector<Process> process;   // danh sách các tiến trình của hệ thống
 	
-	private Vector<Boolean> trace;
+	private Vector<Boolean> trace;   // mảng truy vết các bước của thuật toán banker
 	
-	private int nProcess;
+	private int nProcess;   // số lượng tiến trình trong hệ thống
 	
-	private int nResource;
+	private int nResource;   // số lượng tài nguyên trong hệ thống
 	
 	public Coordinator() {
 		
@@ -42,8 +42,8 @@ public class Coordinator {
 	
 	public boolean isSafe() {
 		
-		Vector<Integer> work = new Vector<Integer>(nResource);
-		Vector<Boolean> finish = new Vector<Boolean>();
+		Vector<Integer> work = new Vector<Integer>(nResource);   // vector cho biết mỗi TN còn bao nhiêu
+		Vector<Boolean> finish = new Vector<Boolean>();   // vector cho biết TT có chắc chắn kết thúc không 
 		trace.clear();
 		for(int i = 0; i < nProcess; ++ i) {
 			finish.add(false);

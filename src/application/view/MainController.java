@@ -440,21 +440,18 @@ public class MainController extends Pane implements Initializable  {
 					systemStatus.setVisible(true);
 				} else {
 					this.resourceFault = VectorOperator.resourceFault;
-					//System.out.println(this.resourceFault.toString());
 					resultQuery.setText("Block! Not enough available resources");
 					resultQuery.setVisible(true);
 					alertColor ="red";
 				}
 			} else {
 				this.resourceFault = VectorOperator.resourceFault;
-				//System.out.println(this.resourceFault.toString());
 				resultQuery.setText("Error! Request exceeds resource declaration");
 				resultQuery.setVisible(true);
 				alertColor = "red";
 			}
 			showTable();
 			turn = true;
-			//System.out.println(resourceFault);
 		}
 	}
 	
