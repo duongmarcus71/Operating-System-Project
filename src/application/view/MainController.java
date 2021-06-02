@@ -326,6 +326,7 @@ public class MainController extends Pane implements Initializable  {
 		backButton.setVisible(true);
 		stateNSButton.setVisible(true);
 		resultArea.setVisible(true);
+		availableResourceCol.setText("Work");
 		
 		stateTurn = 0;
 		curProcess = 0;
@@ -353,6 +354,7 @@ public class MainController extends Pane implements Initializable  {
 		backButton.setVisible(false);
 		stateNSButton.setVisible(false);
 		resultArea.setVisible(false);
+		availableResourceCol.setText("Available");
 		
 		for(int i = 0; i < coordinator.getNResource(); ++ i) {
 			int tmp = coordinator.getResource().get(i).getAvailable();
