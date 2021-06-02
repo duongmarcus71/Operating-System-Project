@@ -56,7 +56,7 @@ public class MainController extends Pane implements Initializable  {
 	
 	private TableViewSelectionModel a;
 	
-	private boolean turn, fTurn;
+	private boolean turn, fTurn, isUnsafe;
 	
 	private Vector<Integer> backup;
 	
@@ -197,8 +197,10 @@ public class MainController extends Pane implements Initializable  {
 		
 		// init UI
 		initUI();
+		resourceTable(coordinator.getResource());
 		turn = false;
 		fTurn = false;
+		isUnsafe = false;
 		q = new Query(coordinator.getNResource());
 		processRequest.setText("");
 		row = -1;
@@ -298,7 +300,7 @@ public class MainController extends Pane implements Initializable  {
 		setTable(max);
 		setTable(allocate);
 		setTable(need);
-		resourceTable(coordinator.getResource());
+		resourceTable.refresh();
 	}
 	
 	public void reloadTable() {
@@ -331,7 +333,9 @@ public class MainController extends Pane implements Initializable  {
 		backup = new Vector<Integer>();
 		resultArea.clear();
 		row = 0;
-		reloadTable();
+		
+		if(isUnsafe == true) coordinator.changeState(q.getPos(), q.getRequest());
+		showTable();
 	}
 	
 	@FXML
@@ -358,7 +362,9 @@ public class MainController extends Pane implements Initializable  {
 			coordinator.getResource().get(i).setAvailable( tmp );
 		}
 		row = q.getPos();
-		reloadTable();
+		VectorOperator vO = new VectorOperator();
+		if(isUnsafe == true) coordinator.changeState(q.getPos(), vO .reverse(q.getRequest()));
+		showTable();
 	}
 	
 	public void writeResult(String ins, Vector<Integer> output) {
@@ -404,15 +410,14 @@ public class MainController extends Pane implements Initializable  {
 			queryTable(coordinator.getNProcess());
 			turn = false;
 			row = -1;
-			showTable();
 		} else {
-			
 			row = q.getPos();
 			VectorOperator vO = new VectorOperator();
 			int m = coordinator.getNResource();
 			
 			if(vO.cmp(m, q.getRequest(), coordinator.getProcess().get(q.getPos()).getNeed())) {
 				Vector<Integer> work = new Vector<Integer>();
+				
 				for(int i = 0; i < m; ++ i) {
 					work.add(coordinator.getResource().get(i).getAvailable());
 				}
@@ -425,12 +430,15 @@ public class MainController extends Pane implements Initializable  {
 						systemStatus.setText("Safe");
 						viewDetailButton.setVisible(true);
 						alertColor = "green";
+						isUnsafe = false;
 						
 					} else {
 						resultQuery.setText("Block! System unsafe");
 						systemStatus.setText("Unsafe");
-						coordinator.changeState(q.getPos(), vO.reverse(q.getRequest()));
+					    viewDetailButton.setVisible(true);
 						alertColor = "fullRed";
+						coordinator.changeState(q.getPos(), vO.reverse(q.getRequest()));
+						isUnsafe = true;
 					}
 					
 					if(fTurn == false) fTurn = true;
@@ -448,9 +456,9 @@ public class MainController extends Pane implements Initializable  {
 				resultQuery.setVisible(true);
 				alertColor = "red";
 			}
+			
 			showTable();
 			turn = true;
-
 		}
 	}
 	

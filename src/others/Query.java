@@ -6,9 +6,9 @@ import element.Process;
 
 public class Query {
 	
-	private int posProcess;
+	private int posProcess;   // tên tiến trình yêu cầu tài nguyên
 	
-	private Vector<Integer> request;
+	private Vector<Integer> request;   // vector yêu cầu tài nguyên của tiến trình
 	
 	public Query(int n) {
 		posProcess = 0;
