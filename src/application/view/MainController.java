@@ -72,7 +72,7 @@ public class MainController extends Pane implements Initializable  {
 	private TableView<String[]> need;
 	
     @FXML
-    private Label nOfRLabel, nOfPLabel, queryStatusLabel, processRequestLabel;
+    private Label nOfRLabel, nOfPLabel, processRequestLabel;
 
     @FXML
     private Label nOfR, nOfP, queryStatus , processRequest;
@@ -315,7 +315,6 @@ public class MainController extends Pane implements Initializable  {
 		viewDetailButton.setVisible(false);
 		resultQuery.setVisible(false);
 		nextStepButton.setVisible(false);
-		queryStatusLabel.setVisible(false);
 		processRequestLabel.setVisible(false);
 		processRequest.setVisible(false);
 		queryTable.setVisible(false);
@@ -341,7 +340,6 @@ public class MainController extends Pane implements Initializable  {
 		viewDetailButton.setVisible(true);
 		resultQuery.setVisible(true);
 		nextStepButton.setVisible(true);
-		queryStatusLabel.setVisible(true);
 		processRequestLabel.setVisible(true);
 		processRequest.setVisible(true);
 		queryTable.setVisible(true);
@@ -367,7 +365,7 @@ public class MainController extends Pane implements Initializable  {
 		resultArea.appendText(ins + " Process " + curProcess + ": ");
 		for(int i = 0; i < coordinator.getNResource(); ++ i) {
 			resultArea.appendText(coordinator.getResource().get(i).getName()
-				+ " " + output.get(i) + " đơn vị");
+				+ " " + output.get(i) + " units");
 			if(i == coordinator.getNResource() - 1) resultArea.appendText(".\n\n");
 			else resultArea.appendText(", ");
 		}
@@ -378,8 +376,8 @@ public class MainController extends Pane implements Initializable  {
 		if(stateTurn < coordinator.getTrace().size()) {
 			if(coordinator.getTrace().get(stateTurn) == true ) {
 				dataState.get(curProcess).setStatus("T");
-				writeResult("Cung cấp cho", coordinator.getProcess().get(curProcess).getNeed());
-				writeResult("Thu hồi từ", coordinator.getProcess().get(curProcess).getMax());
+				writeResult("Distrubute : ", coordinator.getProcess().get(curProcess).getNeed());
+				writeResult("Reclaim : ", coordinator.getProcess().get(curProcess).getMax());
 				
 				for(int i = 0; i < coordinator.getNResource(); ++ i) {
 					int tmp = coordinator.getResource().get(i).getAvailable();
@@ -452,6 +450,7 @@ public class MainController extends Pane implements Initializable  {
 			}
 			showTable();
 			turn = true;
+
 		}
 	}
 	
@@ -461,7 +460,6 @@ public class MainController extends Pane implements Initializable  {
 		viewDetailButton.setVisible(true);
 		resultQuery.setVisible(true);
 		nextStepButton.setVisible(true);
-		queryStatusLabel.setVisible(true);
 		processRequestLabel.setVisible(true);
 		processRequest.setVisible(true);
 		queryTable.setVisible(true);
@@ -494,20 +492,20 @@ public class MainController extends Pane implements Initializable  {
 		catch (Exception ex) {
         	isCaptured = false;
         	Alert inform = new Alert(Alert.AlertType.INFORMATION);
-			inform.setHeaderText("Chưa lưu ảnh!");
+			inform.setHeaderText("Image has been not saved yet !");
 			inform.showAndWait();
         }
 		if(isCaptured) {
 			Alert inform = new Alert(Alert.AlertType.INFORMATION);
-			inform.setHeaderText("Lưu ảnh thành công!");
+			inform.setHeaderText("Image has been successful saved !");
 			inform.showAndWait();
 		}
-		this.setOnMouseEntered(mouseEvent -> {
-			this.getStyleClass().add("btnCaptureGPEntered");
-		});
-		this.setOnMouseExited(mouseEvent -> {
-			this.getStyleClass().remove(4);
-		});
+//		this.setOnMouseEntered(mouseEvent -> {
+//			this.getStyleClass().add("btnCaptureGPEntered");
+//		});
+//		this.setOnMouseExited(mouseEvent -> {
+//			this.getStyleClass().remove(4);
+//		});
 		
 	}
 }
