@@ -26,6 +26,7 @@ public class Main extends Application {
 			sceneExit = new Scene(root3);
 			stage = primaryStage;
 			stage.setScene(sceneOpening);
+			stage.setTitle("Banker's Algorithm");
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
