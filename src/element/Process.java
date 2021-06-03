@@ -17,7 +17,9 @@ public class Process {
 		
 		Random rd = new Random();
 		for(int i = 0; i < n; ++ i) {
-			max.add(rd.nextInt(resource.get(i).getAvailable())+1);
+			int Max = resource.get(i).getAvailable() + 1;
+			int min = (int) (Max * 0.8) ;
+			max.add(rd.nextInt(Max - min + 1 ) + min);
 		}
 		
 		for(int i = 0; i < n; ++ i) {
