@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class Process {
 	
-	private Vector<Integer> max;   // số lượng lớn nhất mỗi kiểu TN của từng tiến trình
-	private Vector<Integer> allocation;   // số lượng mỗi kiểu TN đã cấp cho tiến trình
-	private Vector<Integer> need;   // số lượng mỗi kiểu TN còn cần đến của từng tiến trình
+	private Vector<Integer> max;   // sÃ´Ì� lÆ°Æ¡Ì£ng lÆ¡Ì�n nhÃ¢Ì�t mÃ´Ìƒi kiÃªÌ‰u TN cuÌ‰a tÆ°Ì€ng tiÃªÌ�n triÌ€nh
+	private Vector<Integer> allocation;   // sÃ´Ì� lÆ°Æ¡Ì£ng mÃ´Ìƒi kiÃªÌ‰u TN Ä‘aÌƒ cÃ¢Ì�p cho tiÃªÌ�n triÌ€nh
+	private Vector<Integer> need;   // sÃ´Ì� lÆ°Æ¡Ì£ng mÃ´Ìƒi kiÃªÌ‰u TN coÌ€n cÃ¢Ì€n Ä‘ÃªÌ�n cuÌ‰a tÆ°Ì€ng tiÃªÌ�n triÌ€nh
 	
 	public Process(int n, Vector<Resource> resource) {
 		
@@ -17,10 +17,12 @@ public class Process {
 		
 		Random rd = new Random();
 		for(int i = 0; i < n; ++ i) {
-			max.add(rd.nextInt(resource.get(i).getAvailable())+1);
+			int Max = resource.get(i).getAvailable() + 1;
+			int min = (int) (Max * 0.8) ;
+			max.add(rd.nextInt(Max - min + 1 ) + min);
 		}
 		
-		for(int i = 0; i < n; ++ i) {
+		for(int i = 0; i < n; ++ i) {		
 			allocation.add(rd.nextInt(max.get(i)));
 		}
 		
